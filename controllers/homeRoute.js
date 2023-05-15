@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
       include: [{ model: User }],
     });
     const posts = posted.map(post => post.get({ plain: true }));
-    // console.log("posts+++", posts);
+    //  const con = console.log(posts)
     res.render("home", {
       posts,
       logged_in: req.session.logged_in,

@@ -8,7 +8,6 @@ router.get("/", async (req, res) => {
       where: {
         user_id: req.session.user_id,
       },
-
       include: [
         {
           model: Comment,
@@ -21,7 +20,7 @@ router.get("/", async (req, res) => {
     });
 
     const userPosts = user.map(post => post.get({ plain: true }));
-
+    // res.status(200).json({userPosts})
     res.render("dashboard", {
       userPosts,
       logged_in: req.session.logged_in,
