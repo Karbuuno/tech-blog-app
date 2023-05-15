@@ -1,0 +1,110 @@
+  <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="../">
+                    Tech Blog
+                </a>
+                <span class="navbar-burger burger" data-target="navbarMenu">
+                        <span></span>
+                <span></span>
+                <span></span>
+                </span>
+            </div>
+            <div id="navbarMenu" class="navbar-menu">
+                <div class="navbar-end">
+                    <a class="navbar-item is-active" href="/">
+                            Home
+                        </a>
+                    <a class="navbar-item">
+                            Dashboard
+                        </a>
+                    {{#if logged_in}}
+                    <a class="navbar-item" id="logout">
+                           Logout
+                        </a>
+                    {{else}}
+                     <a class="navbar-item" href="/login">
+                           Login
+                        </a>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- END NAV -->
+ 
+ 
+ 
+ 
+ 
+ <section class="hero is-info is-small is-bold">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title">Dashboard</h1>
+            </div>
+        </div>
+    </section>
+
+    <div class="has-text-centered is-half">
+        <button class="button is-primary mt-5 is-half js-modal-trigger" data-target="add-post-modal">Add New Post</button>
+    </div>
+
+    <div class="container">
+        <!-- START ARTICLE FEED -->
+        <section class="articles">
+            <div class="column is-8 is-offset-2">
+              
+              
+               
+                <!-- START ARTICLE -->
+                {{#each userPosts as |post| }}
+                <div class="card article">
+                    <div class="card-content">
+                        <div>
+                           <h3><a href="./dashboard/{{post.id}}">{{post.title}}</a></h3> 
+                           <div class="has-text-right">
+                            <h4 class="has-text-weight-semibold">Posted on {{formDate post.createdAt}}</h4>
+                           </div>
+                        </div>
+                        <div>
+                            <p>{{post.contents}}</p>
+                        </div>
+                        <div class="update-delete-div has-text-right">
+                                
+                            </div>
+                    </div>
+                </div>
+                {{/each}}
+                <!-- END ARTICLE -->
+              </div>
+
+        </section>
+        <!-- END ARTICLE FEED -->
+    </div>
+
+    {{!-- Add post modal --}}
+    <div id="add-post-modal" class="modal">
+    <div class="modal-background"></div>
+
+    <div class="modal-content">
+    <div class="box">
+    
+      <!-- Add content -->
+      <input class="input is-info" type="text" placeholder="Title" id="modal-title-input">
+      <textarea class="textarea is-info mt-5" placeholder="Content:" id="modal-content-textarea"></textarea>
+      <div class="has-text-right">
+        <button class="button is-primary mt-5" id="add-post">Add Post</button>
+      </div>
+    </div>
+  </div>   
+
+
+
+   
+
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="/js/login.js"></script>
+        <script src="/js/logout.js"></script>
+        <script src="/js/modal.js"></script>
+        <script src="/js/addPost.js"></script>
+        

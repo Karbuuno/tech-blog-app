@@ -1,0 +1,103 @@
+  <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="../">
+                    Tech Blog
+                </a>
+                <span class="navbar-burger burger" data-target="navbarMenu">
+                        <span></span>
+                <span></span>
+                <span></span>
+                </span>
+            </div>
+            <div id="navbarMenu" class="navbar-menu">
+                <div class="navbar-end">
+                    <a class="navbar-item is-active" href="/">
+                            Home
+                        </a>
+                    {{#if logged_in}}
+                    <a class="navbar-item" href="/dashboard">
+                            Dashboard
+                        </a>
+                    
+                    <a class="navbar-item" id="logout">
+                           Logout
+                        </a>
+                    {{else}}
+                     <a class="navbar-item" href="/login">
+                           Login
+                        </a>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- END NAV -->
+
+     
+ <section class="hero is-info is-small is-bold">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title">Featured Post</h1>
+            </div>
+        </div>
+    </section>
+ 
+ 
+ <div class="card article mt-5">
+                    <div class="card-content">
+                        <div >
+                            <div class="has-text-right">
+                             <h4 class="has-text-weight-semibold">Posted by {{user.user_name}} on {{formDate singlePost.createdAt}}</h4>
+                             </div>
+                           <h3><a href="./post/{{singlePost.id}}" >{{singlePost.title}}</a></h3> 
+                          
+                        </div>
+                        <div>
+                            <p>{{singlePost.contents}}</p>
+                        </div>
+                        </div>
+                        </div>
+
+                        <div class="mt-5 has-text-centered">
+                        {{#if logged_in}}
+                        <button class="button is-info js-modal-trigger" data-target="comment-modal" data-id="{{singlePost.id}}" >Add Comment</button>
+                        {{else}}
+                        <a href="/login" class="button is-info" id="comment-login">Add Comment</a>
+                        {{/if}}
+                        </div>
+
+                        {{#each singlePost.comments as |comments| }}
+                        <div class="card article mt-5">
+                        <div class="comments card-content">
+                            <div class="has-text-right">
+                                <h4 class="has-text-weight-semibold">Posted by {{user.user_name}} on {{formDate comments.createdAt}}</h4>
+                            </div>
+                            <div>
+                                {{comments.contents}}
+                            </div>
+                        </div>
+                        </div>
+                        {{/each}}
+
+
+                        
+<div id="comment-modal" class="modal">
+  <div class="modal-background"></div>
+
+  <div class="modal-content">
+    <div class="box">
+    
+      <!-- Your content -->
+      <input class="input is-info" placeholder="Add a comment" id="comment"></input>
+      <div class="has-text-right">
+        <button class="button is-primary mt-5" id="add-comment">Add Comment</button>
+      </div>
+    </div>
+  </div>     
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="/js/modal.js"></script>
+<script src="/js/addComment.js"></script>
+<script src="/js/logout.js"></script>
+<script src="/js/deletePost.js"></script>

@@ -1,0 +1,12 @@
+[
+  {
+    "title": "Javascript",
+    "contents": "JavaScript (JS) is a computer programming language used to make websites and applications dynamic and interactive.",
+    "user_id": 1
+  },
+  {
+    "title": "React",
+    "contents": "React is a free and open-source front-end JavaScript library for building user interfaces based on components ",
+    "user_id": 2
+  }
+]

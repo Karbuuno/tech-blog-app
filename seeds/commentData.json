@@ -1,0 +1,12 @@
+[
+  {
+    "contents": "I love React",
+    "user_id": 2,
+    "post_id": 1
+  },
+  {
+    "contents": "JavaScript is an excellent tool for beginning programmers",
+    "user_id": 1,
+    "post_id": 2
+  }
+]
